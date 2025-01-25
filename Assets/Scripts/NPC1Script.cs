@@ -62,6 +62,9 @@ public class NPC1Script : MonoBehaviour
         Badchoice3.SetActive(false);
         Badchoice4.SetActive(false);
         Badchoice5.SetActive(false);
+        
+        GoodChoice2.SetActive(false);
+        GoodChoice3.SetActive(false);
 
         PlayerTextDisplay.SetActive(false);
         NPCTextDisplay.SetActive(false);
@@ -69,6 +72,12 @@ public class NPC1Script : MonoBehaviour
 
         NPC1ChoiceA.SetActive(false);
         NPC1ChoiceB.SetActive(false);
+
+        NPCText.text = "";
+        PlayerText.text = "";
+
+
+
         nextButton.SetActive(false);
     }
 
@@ -93,7 +102,7 @@ public class NPC1Script : MonoBehaviour
             Debug.Log(primeInt);
             PlayerTextDisplay.SetActive(true);
             NPCTextDisplay.SetActive(true);
-            NPCText.text = "";
+            NPCText.text = "Hello";
             PlayerText.text = "";
             
         }
@@ -101,7 +110,7 @@ public class NPC1Script : MonoBehaviour
         {
             PlayerTextDisplay.SetActive(false);
             Debug.Log(primeInt);
-            NPCText.text = "";
+            NPCText.text = "Hello";
             PlayerText.text = "";
 
             Cursor.lockState = CursorLockMode.Confined;
@@ -166,6 +175,7 @@ public class NPC1Script : MonoBehaviour
         }
 
         
+        // TEXT AFTER SUCCESS
         // // // // // // // // // // // // // // // // // // // // // // // 
 
         else if(primeInt == 7 && stressmeter < 75)
