@@ -10,6 +10,8 @@ public class NPC1Script : MonoBehaviour
 
     public int primeInt = 1;
 
+    public int stressmeter = 0;
+
     public bool allowspace = true;
     
 
@@ -91,9 +93,7 @@ public class NPC1Script : MonoBehaviour
             Debug.Log(primeInt);
             PlayerTextDisplay.SetActive(true);
             NPCTextDisplay.SetActive(true);
-            NPCName.text = "";
             NPCText.text = "";
-            PlayerName.text = "";
             PlayerText.text = "";
             
         }
@@ -101,9 +101,7 @@ public class NPC1Script : MonoBehaviour
         {
             PlayerTextDisplay.SetActive(false);
             Debug.Log(primeInt);
-            NPCName.text = "";
             NPCText.text = "";
-            PlayerName.text = "";
             PlayerText.text = "";
 
             Cursor.lockState = CursorLockMode.Confined;
@@ -112,29 +110,75 @@ public class NPC1Script : MonoBehaviour
             NPC1ChoiceA.SetActive(true);
             NPC1ChoiceB.SetActive(true);
         }
+        // GOOD CHOICE ROUTE/TEXT
+        // // // // // // // // // // // // // // // // // // // // // // // 
 
-        else if(primeInt == 4 && ActivateChoice1)
+        else if(primeInt == 4 && stressmeter < 27)
         {
-            Debug.Log(primeInt + "" + ActivateChoice1);
-            NPCName.text = "";
+            
             NPCText.text = "";
-            PlayerName.text = "";
             PlayerText.text = "";
             GoodChoice2.SetActive(true);
 
-        }else if(primeInt == 4 && ActivateChoice2)
+        }
+
+        else if(primeInt == 5 && stressmeter < 27 )
+        {
+            
+            NPCText.text = "";
+            PlayerText.text = "";
+            GoodChoice3.SetActive(true);
+        }
+        
+
+        else if(primeInt == 6 && stressmeter < 54)
+        {
+            
+            NPCText.text = "";
+            PlayerText.text = "";
+        }
+        
+        
+        // BAD CHOICE ROUTE/TEXT
+        // // // // // // // // // // // // // // // // // // // // // // // 
+        
+        else if(primeInt == 4 && stressmeter == 27)
         {
             Debug.Log(primeInt + "" + ActivateChoice2);
-            NPCName.text = "";
+            
             NPCText.text = "";
-            PlayerName.text = "";
+            PlayerText.text = "";
+        }
+
+        else if (primeInt == 5 && stressmeter == 54)
+        {
+            
+            NPCText.text = "";
+            PlayerText.text = "";
+        }
+
+        else if(primeInt == 6 && stressmeter > 75)
+        {
+            // game end with bad ending
+            
+            NPCText.text = "";
+            PlayerText.text = "";
+        }
+
+        
+        // // // // // // // // // // // // // // // // // // // // // // // 
+
+        else if(primeInt == 7 && stressmeter < 75)
+        {
+            NPCText.text = "";
             PlayerText.text = "";
         }
     }
 
-
+    
     public void GoodChoiceResults()
     {
+        stressmeter -= 10;
         NPC1ChoiceA.SetActive(false);
         NPC1ChoiceB.SetActive(false);
         ActivateChoice1 = true;
@@ -143,7 +187,16 @@ public class NPC1Script : MonoBehaviour
 
     public void GoodChoiceAgain()
     {
-
+        
+        stressmeter -= 10;
+        GoodChoice2.SetActive(false);
+        Next();
+    }
+    public void FinalGoodChoice()
+    {
+        stressmeter -= 10;
+        GoodChoice3.SetActive(false);
+        Next();
     }
 
 
@@ -154,6 +207,7 @@ public class NPC1Script : MonoBehaviour
         Badchoice2.SetActive(true);
         Badchoice3.SetActive(true);
         ActivateChoice2 = true;
+        stressmeter += 27;
         Next();
     }
 
@@ -161,11 +215,17 @@ public class NPC1Script : MonoBehaviour
     {
         Badchoice4.SetActive(true);
         Badchoice5.SetActive(true);
-
+        stressmeter += 27;
+        Next();
     }
 
     public void finalBadChoice()
     {
+        stressmeter += 27;
+        if (stressmeter >= 75)
+        {
+            Debug.Log("end game");
+        }
         Debug.Log("lost after this");
     }
 
