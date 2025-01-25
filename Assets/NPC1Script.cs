@@ -34,6 +34,20 @@ public class NPC1Script : MonoBehaviour
     public GameObject NPC1ChoiceA;
     public GameObject NPC1ChoiceB;
 
+
+    public GameObject GoodChoice2;
+    public GameObject GoodChoice3;
+
+
+    public GameObject Badchoice2;
+    
+    public GameObject Badchoice3;
+    
+    public GameObject Badchoice4;
+    
+    public GameObject Badchoice5;
+
+
     // button to skip text/move on to the next line 
     public GameObject nextButton;
 
@@ -42,6 +56,11 @@ public class NPC1Script : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Badchoice2.SetActive(false);
+        Badchoice3.SetActive(false);
+        Badchoice4.SetActive(false);
+        Badchoice5.SetActive(false);
+
         PlayerTextDisplay.SetActive(false);
         NPCTextDisplay.SetActive(false);
 
@@ -80,6 +99,7 @@ public class NPC1Script : MonoBehaviour
         }
         else if (primeInt == 3)
         {
+            PlayerTextDisplay.SetActive(false);
             Debug.Log(primeInt);
             NPCName.text = "";
             NPCText.text = "";
@@ -87,6 +107,7 @@ public class NPC1Script : MonoBehaviour
             PlayerText.text = "";
 
             Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
 
             NPC1ChoiceA.SetActive(true);
             NPC1ChoiceB.SetActive(true);
@@ -99,6 +120,8 @@ public class NPC1Script : MonoBehaviour
             NPCText.text = "";
             PlayerName.text = "";
             PlayerText.text = "";
+            GoodChoice2.SetActive(true);
+
         }else if(primeInt == 4 && ActivateChoice2)
         {
             Debug.Log(primeInt + "" + ActivateChoice2);
@@ -110,23 +133,40 @@ public class NPC1Script : MonoBehaviour
     }
 
 
-    public void Choice1Results()
+    public void GoodChoiceResults()
     {
-        Cursor.lockState = CursorLockMode.Locked;
         NPC1ChoiceA.SetActive(false);
         NPC1ChoiceB.SetActive(false);
         ActivateChoice1 = true;
         Next();
     }
 
-    public void Choice2Results()
+    public void GoodChoiceAgain()
     {
-        
-        Cursor.lockState = CursorLockMode.Locked;
-        NPC1ChoiceA.SetActive(false);
-        NPC1ChoiceB.SetActive(false);
+
+    }
+
+
+
+
+    public void BadChoiceResults()
+    {
+        Badchoice2.SetActive(true);
+        Badchoice3.SetActive(true);
         ActivateChoice2 = true;
         Next();
+    }
+
+    public void BadChoiceAgain()
+    {
+        Badchoice4.SetActive(true);
+        Badchoice5.SetActive(true);
+
+    }
+
+    public void finalBadChoice()
+    {
+        Debug.Log("lost after this");
     }
 
 
