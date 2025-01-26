@@ -5,6 +5,7 @@ using UnityEngine;
 public class showText : MonoBehaviour
 {
     public bool inRange = false;
+    public NPC1Script nPC1Script;
 
 
     // Start is called before the first frame update
@@ -19,7 +20,7 @@ public class showText : MonoBehaviour
         // instantiate or activate a gameobject with the script for the specific NPC
         if(inRange)
         {
-            Debug.Log("IN RANGE");
+            nPC1Script.allowspace = true;
         }   
     }
 
@@ -34,6 +35,7 @@ public class showText : MonoBehaviour
     {
         if (other)
         {
+            Debug.Log("other is: "+ other);
             inRange = true;
         }
         else

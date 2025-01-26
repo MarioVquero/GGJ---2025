@@ -12,7 +12,7 @@ public class NPC1Script : MonoBehaviour
 
     public int stressmeter = 0;
 
-    public bool allowspace = true;
+    public bool allowspace = false;
     
 
     public bool ActivateChoice1 = false;
@@ -84,7 +84,8 @@ public class NPC1Script : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (allowspace)
+        Debug.Log(allowspace);
+        if (allowspace == true)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -101,14 +102,15 @@ public class NPC1Script : MonoBehaviour
         {
             Debug.Log(primeInt);
             PlayerTextDisplay.SetActive(true);
-            NPCTextDisplay.SetActive(true);
-            NPCText.text = "Hello";
-            PlayerText.text = "";
+            // NPCTextDisplay.SetActive(true);
+            NPCText.text = "";
+            PlayerText.text = "Hello";
             
         }
         else if (primeInt == 3)
         {
             PlayerTextDisplay.SetActive(false);
+            NPCTextDisplay.SetActive(true);
             Debug.Log(primeInt);
             NPCText.text = "Hello";
             PlayerText.text = "";
