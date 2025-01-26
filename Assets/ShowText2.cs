@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class showText : MonoBehaviour
+public class ShowText2 : MonoBehaviour
 {
     public bool inRange = false;
-    public NPC1Script nPC1Script;
+    public NP2Script nP2Script;
 
 
     // Start is called before the first frame update
@@ -20,8 +20,7 @@ public class showText : MonoBehaviour
         // instantiate or activate a gameobject with the script for the specific NPC
         if(inRange)
         {
-            
-            nPC1Script.allowspace = true;
+            nP2Script.allowspace = true;
         }   
     }
 
@@ -45,6 +44,4 @@ public class showText : MonoBehaviour
             Debug.Log("out range");
         }
     }
-
-
 }

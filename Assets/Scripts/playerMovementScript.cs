@@ -10,7 +10,7 @@ public class playerMovementScript : MonoBehaviour
     public Rigidbody RB;
     public float speed = 5;
     // canMove is false for intro to game 
-    public bool canMove = false;
+    public bool canMove;
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -18,6 +18,7 @@ public class playerMovementScript : MonoBehaviour
     /// </summary>
     void Start()
     {
+        lockPlayer();
         RB = GetComponent<Rigidbody>();
         transform = GetComponent<Transform>();
     }
@@ -27,8 +28,10 @@ public class playerMovementScript : MonoBehaviour
     /// </summary>
     void Update()
     {
-        if (canMove)
+
+        if (canMove == true)
         {
+            Debug.Log(canMove);
             movement();
         }
     }
@@ -43,4 +46,16 @@ public class playerMovementScript : MonoBehaviour
     }
 
 
+    public void lockPlayer()
+    {
+        canMove = false;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+    public void unlockPlayer()
+    {
+        canMove = true;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 }
